@@ -25,6 +25,8 @@ public static class Variants
 
         Variant.Plasma => new StatBonus(Hp: 0, PhysicalAttack: 0.05, SpecialAttack: 0.05, Defense: 0, Speed: 0),
 
-        Variant.Magnetic => new StatBonus(Hp: 0, PhysicalAttack: 0, SpecialAttack: 0, Defense: 0.05, Speed: 0.05)
+        Variant.Magnetic => new StatBonus(Hp: 0, PhysicalAttack: 0, SpecialAttack: 0, Defense: 0.05, Speed: 0.05),
+
+        _ => throw new ArgumentOutOfRangeException(nameof(variant), variant, null),
     };
 }
