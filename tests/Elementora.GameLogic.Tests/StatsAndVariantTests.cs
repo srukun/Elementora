@@ -31,4 +31,40 @@ public class StatsAndVariantTests
         Assert.Equal(80, original.Defense);
         Assert.Equal(200, tougher.Defense);
     }
+
+    [Fact]
+    public void No_variant_gives_no_bonus()
+    {
+        var bonus = Variants.GetBonus(Variant.None);
+
+        Assert.Equal(0, bonus.Total);
+    }
+
+    [Fact]
+    public void Every_variant_uses_exactly_the_bonus_budget()
+    {
+        foreach(var variant in Enum.GetValues<Variant>())
+        {
+            if(variant == Variant.None)
+            {
+                continue;
+            }
+
+            var bonus = Variants.GetBonus(variant);
+
+            Assert.Equal(Variants.BonusBudget, bonus.Total, precision: 10);
+        }
+    }
+
+    [Fact]
+    public void Plasma_only_boosts_the_two_attack_stats()
+    {
+        var bonus = Variants.GetBonus(Variant.Plasma);
+
+        Assert.Equal(0, bonus.Hp);
+        Assert.True(bonus.PhysicalAttack > 0);
+        Assert.True(bonus.SpecialAttack > 0);
+        Assert.Equal(0, bonus.Defense);
+        Assert.Equal(0, bonus.Speed);
+    }
 }
