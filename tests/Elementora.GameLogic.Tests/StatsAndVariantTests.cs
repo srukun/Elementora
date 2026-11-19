@@ -67,4 +67,48 @@ public class StatsAndVariantTests
         Assert.Equal(0, bonus.Defense);
         Assert.Equal(0, bonus.Speed);
     }
+    private static readonly Stats SampleBase = new(Hp: 80, PhysicalAttack: 90, SpecialAttack: 60, Defense: 80, Speed: 80);
+
+    [Fact]
+
+    public void Level_50_stats_match_the_formula()
+    {
+        var stats = StatCalculator.Calculate(SampleBase, level: 50);
+
+        Assert.Equal(140, stats.Hp);
+
+        Assert.Equal(95, stats.PhysicalAttack);
+    }
+
+    [Fact]
+    public void Stats_grow_with_level()
+    {
+        var low = StatCalculator.Calculate(SampleBase, level: 10);
+        var high = StatCalculator.Calculate(SampleBase, level: 100);
+
+        Assert.True(high.Total > low.Total);
+    }
+
+    [Fact]
+    public void Level_bellow_one_throws()
+    {
+        Assert.Throws<ArgumentOutOfRangeException>(() => StatCalculator.Calculate(SampleBase, level: 0));
+    }
+
+    [Fact]
+    public void Plasma_variant_boosts_attacks_but_not_defense()
+    {
+        var plain = StatCalculator.Calculate(SampleBase, level: 50);
+        var plasma = StatCalculator.Calculate(SampleBase, level: 50, Variant.Plasma);
+
+        Assert.True(plasma.PhysicalAttack > plain.PhysicalAttack);
+        Assert.True(plasma.SpecialAttack > plain.SpecialAttack);
+        Assert.Equal(plain.Defense, plasma.Defense);
+    }
+
+    [Fact]
+    public void Huge_levels_throw_instead_of_overflowing()
+    {
+        Assert.Throws<OverflowException>(() => StatCalculator.Calculate(SampleBase, level: long.MaxValue / 2));
+    }
 }
