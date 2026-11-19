@@ -21,6 +21,6 @@ public static class StatCalculator
 
     private static long OtherStat(long baseStat, long level) => checked(baseStat * level / LevelDivisor + 5);
 
-    public static long ApplyBonus(long value, double bonus) => bonus == 0 ? value : (long)Math.Floor(value * (1 + bonus));
+    private static long ApplyBonus(long value, double bonus) => bonus == 0 ? value : (long)Math.Floor(value * (1 + bonus));
 
 }
