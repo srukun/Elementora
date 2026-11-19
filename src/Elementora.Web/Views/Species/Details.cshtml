@@ -1,0 +1,28 @@
+﻿@model Species
+
+@{
+    ViewData["Title"] = Model.Name;
+    var baseStats = Model.TotalBaseStats();
+}
+
+<h1>@Model.Name</h1>
+<p>
+    <span class="badge bg-primary">@Model.Type</span>
+    <span class="badge bg-secondary">@Model.Rarity</span>
+    <span class="badge bg-dark">Rank @((int)Model.Rank)</span>
+
+</p>
+
+<h2 class="h4 mt-4">Base stats</h2>
+<table class="table w-auto">
+    <tbody>
+        <tr><th>HP</th><td>@baseStats.Hp</td></tr>
+        <tr><th>Physical Attack</th><td>@baseStats.PhysicalAttack</td></tr>
+        <tr><th>Special Attack</th><td>@baseStats.SpecialAttack</td></tr>
+        <tr><th>Defense</th><td>@baseStats.Defense</td></tr>
+        <tr><th>Speed</th><td>@baseStats.Speed</td></tr>
+        <tr class="fw-bold"><th>Total</th><td>@baseStats.Total</td></tr>
+    </tbody>
+</table>
+
+<a asp-action="Index">Back to all species</a>
