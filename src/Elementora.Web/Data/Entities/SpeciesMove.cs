@@ -6,5 +6,5 @@ public class SpeciesMove
     public Species Species { get; set; } = null!;
 
     public int MoveId { get; set; }
-    public Move move { get; set; } = null!;
+    public Move Move { get; set; } = null!;
 }
