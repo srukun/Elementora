@@ -24,7 +24,6 @@ public class AppDbContext : DbContext
             entity.HasIndex(s => s.Name).IsUnique();
             entity.Property(s => s.Type).HasConversion<string>().HasMaxLength(20);
             entity.Property(s => s.Rarity).HasConversion<string>().HasMaxLength(20);
-            entity.Property(s => s.Rarity).HasConversion<string>().HasMaxLength(20);
         });
         modelBuilder.Entity<Move>(entity =>
         {
