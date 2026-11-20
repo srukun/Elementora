@@ -16,7 +16,7 @@ namespace Elementora.Web.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.12")
+                .HasAnnotation("ProductVersion", "10.0.15")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -56,6 +56,89 @@ namespace Elementora.Web.Data.Migrations
                         .IsUnique();
 
                     b.ToTable("Moves");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Accuracy = 100,
+                            Category = "Physical",
+                            Name = "Spark Bite",
+                            Power = 40,
+                            Type = "Energy"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Accuracy = 95,
+                            Category = "Special",
+                            Name = "Volt Beam",
+                            Power = 70,
+                            Type = "Energy"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Accuracy = 100,
+                            Category = "Physical",
+                            Name = "Vine Lash",
+                            Power = 45,
+                            Type = "Bio"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Accuracy = 95,
+                            Category = "Special",
+                            Name = "Spore Burst",
+                            Power = 65,
+                            Type = "Bio"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Accuracy = 95,
+                            Category = "Physical",
+                            Name = "Gear Smash",
+                            Power = 60,
+                            Type = "Tech"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Accuracy = 100,
+                            Category = "Special",
+                            Name = "Laser Pulse",
+                            Power = 55,
+                            Type = "Tech"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Accuracy = 100,
+                            Category = "Special",
+                            Name = "Static Shift",
+                            Power = 50,
+                            Type = "Null"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Accuracy = 100,
+                            Category = "Physical",
+                            Name = "Tackle",
+                            Power = 35,
+                            Type = "Null"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Accuracy = 100,
+                            Category = "Utility",
+                            Name = "Harden",
+                            Power = 0,
+                            Type = "Null"
+                        });
                 });
 
             modelBuilder.Entity("Elementora.Web.Data.Entities.Species", b =>
@@ -105,6 +188,86 @@ namespace Elementora.Web.Data.Migrations
                         .IsUnique();
 
                     b.ToTable("Species");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BaseDefense = 50,
+                            BaseHp = 60,
+                            BasePhysicalAttack = 50,
+                            BaseSpecialAttack = 75,
+                            BaseSpeed = 85,
+                            Name = "Voltkit",
+                            Rank = 1,
+                            Rarity = "Common",
+                            Type = "Energy"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            BaseDefense = 70,
+                            BaseHp = 75,
+                            BasePhysicalAttack = 60,
+                            BaseSpecialAttack = 55,
+                            BaseSpeed = 45,
+                            Name = "Sproutling",
+                            Rank = 1,
+                            Rarity = "Common",
+                            Type = "Bio"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            BaseDefense = 75,
+                            BaseHp = 65,
+                            BasePhysicalAttack = 75,
+                            BaseSpecialAttack = 45,
+                            BaseSpeed = 50,
+                            Name = "Cogling",
+                            Rank = 1,
+                            Rarity = "Common",
+                            Type = "Tech"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            BaseDefense = 65,
+                            BaseHp = 70,
+                            BasePhysicalAttack = 65,
+                            BaseSpecialAttack = 65,
+                            BaseSpeed = 65,
+                            Name = "Glitchmote",
+                            Rank = 1,
+                            Rarity = "Uncommon",
+                            Type = "Null"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            BaseDefense = 100,
+                            BaseHp = 95,
+                            BasePhysicalAttack = 90,
+                            BaseSpecialAttack = 60,
+                            BaseSpeed = 55,
+                            Name = "Thornback",
+                            Rank = 2,
+                            Rarity = "Rare",
+                            Type = "Bio"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            BaseDefense = 110,
+                            BaseHp = 110,
+                            BasePhysicalAttack = 120,
+                            BaseSpecialAttack = 100,
+                            BaseSpeed = 90,
+                            Name = "Arcforge",
+                            Rank = 3,
+                            Rarity = "Legendary",
+                            Type = "Tech"
+                        });
                 });
 
             modelBuilder.Entity("Elementora.Web.Data.Entities.SpeciesMove", b =>
@@ -120,6 +283,98 @@ namespace Elementora.Web.Data.Migrations
                     b.HasIndex("MoveId");
 
                     b.ToTable("SpeciesMoves");
+
+                    b.HasData(
+                        new
+                        {
+                            SpeciesId = 1,
+                            MoveId = 1
+                        },
+                        new
+                        {
+                            SpeciesId = 1,
+                            MoveId = 2
+                        },
+                        new
+                        {
+                            SpeciesId = 1,
+                            MoveId = 8
+                        },
+                        new
+                        {
+                            SpeciesId = 2,
+                            MoveId = 3
+                        },
+                        new
+                        {
+                            SpeciesId = 2,
+                            MoveId = 4
+                        },
+                        new
+                        {
+                            SpeciesId = 2,
+                            MoveId = 9
+                        },
+                        new
+                        {
+                            SpeciesId = 3,
+                            MoveId = 5
+                        },
+                        new
+                        {
+                            SpeciesId = 3,
+                            MoveId = 6
+                        },
+                        new
+                        {
+                            SpeciesId = 3,
+                            MoveId = 9
+                        },
+                        new
+                        {
+                            SpeciesId = 4,
+                            MoveId = 7
+                        },
+                        new
+                        {
+                            SpeciesId = 4,
+                            MoveId = 8
+                        },
+                        new
+                        {
+                            SpeciesId = 4,
+                            MoveId = 9
+                        },
+                        new
+                        {
+                            SpeciesId = 5,
+                            MoveId = 3
+                        },
+                        new
+                        {
+                            SpeciesId = 5,
+                            MoveId = 4
+                        },
+                        new
+                        {
+                            SpeciesId = 5,
+                            MoveId = 8
+                        },
+                        new
+                        {
+                            SpeciesId = 6,
+                            MoveId = 2
+                        },
+                        new
+                        {
+                            SpeciesId = 6,
+                            MoveId = 5
+                        },
+                        new
+                        {
+                            SpeciesId = 6,
+                            MoveId = 6
+                        });
                 });
 
             modelBuilder.Entity("Elementora.Web.Data.Entities.SpeciesMove", b =>

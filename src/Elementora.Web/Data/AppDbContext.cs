@@ -41,5 +41,9 @@ public class AppDbContext : DbContext
 
             entity.HasOne(sm => sm.Move).WithMany(m => m.SpeciesMoves).HasForeignKey(sm => sm.MoveId);
         });
+
+        modelBuilder.Entity<Species>().HasData(SeedData.AllSpecies);
+        modelBuilder.Entity<Move>().HasData(SeedData.AllMoves);
+        modelBuilder.Entity<SpeciesMove>().HasData(SeedData.AllSpeciesMoves);
     }
 }
