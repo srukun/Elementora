@@ -17,5 +17,6 @@ public class Species
     public int BaseDefense { get; set; }
     public int BaseSpeed { get; set; }
 
+    public ICollection<SpeciesMove> SpeciesMoves { get; set; } = new List<SpeciesMove>();
     public Stats TotalBaseStats() => new(BaseHp, BasePhysicalAttack, BaseSpecialAttack, BaseDefense, BaseSpeed);
 }
